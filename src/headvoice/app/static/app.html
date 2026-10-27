@@ -1,0 +1,140 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HeadVoice</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="session.css">
+  <link rel="stylesheet" href="app.css">
+  <script src="common.js"></script>
+  <script src="session.js"></script>
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="./"><span data-brand-mark></span>HeadVoice</a>
+    <div class="chips" aria-live="polite">
+      <span class="pill neutral" id="chip-state"><span class="dot"></span><span>Starting</span></span>
+      <span class="pill neutral" id="chip-signal"><span class="dot"></span><span>Signal</span></span>
+      <span class="pill neutral" id="chip-online"><span class="dot"></span><span>Offline</span></span>
+    </div>
+    <div class="header-actions">
+      <a class="btn btn-ghost" href="messages"><span data-icon="message"></span> My messages</a>
+      <button class="btn btn-primary" id="start-btn" type="button">Start <kbd>S</kbd></button>
+      <button class="icon-btn" id="drawer-btn" type="button" aria-label="Helper panel"><span data-icon="settings"></span></button>
+      <button class="icon-btn" data-theme-toggle type="button"></button>
+    </div>
+  </header>
+
+  <!-- Small live camera window, top right. Local only: this picture never leaves the computer. -->
+  <aside class="pip" id="pip" aria-label="Camera">
+    <img id="pip-img" alt="Your camera picture">
+    <div class="pip-empty" id="pip-empty"><span data-icon="cameraOff"></span></div>
+    <div class="pip-bar">
+      <span class="pip-status" id="pip-status">Camera</span>
+      <button class="pip-btn" id="pip-hide" type="button" aria-label="Hide camera window"><span data-icon="x"></span></button>
+    </div>
+  </aside>
+  <button class="pip-show pill neutral" id="pip-show" type="button" hidden><span data-icon="camera"></span> Show camera</button>
+
+  <main class="stage">
+    <div class="task-banner pill" id="task" hidden></div>
+    <div id="menu" class="menu"></div>
+    <section class="ready card" id="ready">
+      <span data-icon="play" class="icon"></span>
+      <h1>Ready when you are</h1>
+      <p>A helper presses <b>Start</b> (or the S key). Then tilt your head to choose and hold a long blink to speak.</p>
+      <a class="btn btn-ghost" href="start" id="setup-link">Set up HeadVoice first</a>
+    </section>
+  </main>
+
+  <footer class="guide" id="guide" aria-live="polite">
+    <span data-icon="tilt" class="icon"></span>
+    <span id="guide-text">Tilt to choose. Hold a long blink to speak. A long blink with nothing chosen shows more messages.</span>
+  </footer>
+
+  <div class="speaking" id="speaking" hidden aria-live="assertive">
+    <div class="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="speaking-text" id="speaking-text"></div>
+  </div>
+
+  <div class="overlay" id="consent" hidden role="dialog" aria-modal="true" aria-labelledby="consent-title">
+    <div class="overlay-card card card-pad">
+      <h2 id="consent-title">Calibrate HeadVoice</h2>
+      <p>About 25 seconds: tilt in each direction, blink normally, then close your eyes three times. A low tone means close your eyes, a high tone means open them.</p>
+      <div class="consent-actions">
+        <button class="btn btn-primary" id="consent-local" type="button">On this computer <kbd>L</kbd></button>
+        <button class="btn btn-secondary" id="consent-cloud" type="button">Secure cloud processing <kbd>Y</kbd></button>
+        <button class="btn btn-ghost" id="consent-cancel" type="button">Cancel <kbd>Esc</kbd></button>
+      </div>
+      <p class="fine" id="consent-cloud-note">Cloud processing uploads the 25-second clip encrypted, uses it once to compute your settings, and deletes it right away.</p>
+    </div>
+  </div>
+
+  <div class="overlay" id="calibration" hidden>
+    <div class="calib-box">
+      <p class="calib-step" id="calib-step"></p>
+      <p class="calib-prompt" id="calib-prompt"></p>
+      <div class="calib-track"><div id="calib-bar"></div></div>
+      <p class="fine">Low tone: close your eyes. High tone: open them.</p>
+    </div>
+  </div>
+
+  <aside class="drawer" id="drawer" hidden aria-label="Helper panel">
+    <div class="drawer-head">
+      <h2>Helper panel</h2>
+      <button class="icon-btn" id="drawer-close" type="button" aria-label="Close"><span data-icon="x"></span></button>
+    </div>
+
+    <section>
+      <h3>Session</h3>
+      <div class="drawer-actions">
+        <button class="btn btn-secondary" id="recenter" type="button">Re-center <kbd>N</kbd></button>
+        <button class="btn btn-secondary" id="calibrate" type="button">Calibrate <kbd>C</kbd></button>
+      </div>
+      <label for="layout-select">Layout</label>
+      <select id="layout-select">
+        <option value="four_way">Four directions (up, down, left, right)</option>
+        <option value="two_choice">Two choices (left, right)</option>
+        <option value="binary_scan">Left and right scanning</option>
+      </select>
+      <p class="fine" id="layout-note">Choosing a layout here keeps it: automatic adaptation will not change it this session.</p>
+      <table class="kv" id="params"></table>
+    </section>
+
+    <section>
+      <h3>Research</h3>
+      <p class="fine">For recording evaluation sessions. Set the condition, then start a scripted 10-message task.</p>
+      <label for="condition">Condition</label>
+      <select id="condition">
+        <option value="normal">Normal</option>
+        <option value="adverse_light">Dim light</option>
+        <option value="glare">Glasses glare</option>
+        <option value="off_angle">Camera off to the side</option>
+        <option value="small_moves">Small movements</option>
+      </select>
+      <div class="drawer-actions">
+        <button class="btn btn-secondary" id="task-start" type="button">Start task <kbd>T</kbd></button>
+        <button class="btn btn-ghost" id="task-skip" type="button">Skip target <kbd>K</kbd></button>
+      </div>
+    </section>
+
+    <section>
+      <h3>Adaptation</h3>
+      <div id="agent" class="decisions"></div>
+    </section>
+
+    <section>
+      <h3>Live measurements</h3>
+      <table class="kv" id="features"></table>
+    </section>
+
+    <section>
+      <h3>Events</h3>
+      <ol id="events" class="events" reversed></ol>
+    </section>
+  </aside>
+
+  <script src="app.js"></script>
+</body>
+</html>

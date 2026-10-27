@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Set up HeadVoice</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="session.css">
+  <link rel="stylesheet" href="start.css">
+  <script src="common.js"></script>
+  <script src="session.js"></script>
+</head>
+<body>
+  <div class="wrap narrow">
+    <header class="site-header">
+      <a class="brand" href="./"><span data-brand-mark></span>HeadVoice</a>
+      <div class="header-actions">
+        <a class="btn btn-ghost" href="app">Skip setup</a>
+        <button class="icon-btn" data-theme-toggle type="button"></button>
+      </div>
+    </header>
+
+    <ol class="stepper" id="stepper" aria-label="Setup progress"><li></li><li></li><li></li><li></li></ol>
+    <p class="step-label" id="step-label"></p>
+
+    <!-- 1. Welcome -->
+    <section class="step" data-step="1">
+      <h1>Welcome to HeadVoice</h1>
+      <p class="lede">Setup takes about two minutes. A helper can do it with you.</p>
+      <ul class="plan-list">
+        <li><span data-icon="camera" class="icon"></span><div><b>Camera check</b><p>Make sure the camera sees your face clearly.</p></div></li>
+        <li><span data-icon="sliders" class="icon"></span><div><b>Calibration (optional)</b><p>25 seconds of tilting and blinking so HeadVoice fits how you move.</p></div></li>
+        <li><span data-icon="message" class="icon"></span><div><b>Practice</b><p>Say two messages to get the feel of it.</p></div></li>
+      </ul>
+      <div class="note card"><span data-icon="lock" class="icon"></span><p>The camera picture is processed on this computer and never stored or sent anywhere. Calibration can optionally use the cloud, and only if you agree.</p></div>
+      <div class="actions"><button class="btn btn-primary" data-next>Let's begin <span data-icon="arrowRight"></span></button></div>
+    </section>
+
+    <!-- 2. Camera -->
+    <section class="step" data-step="2" hidden>
+      <h1>Camera check</h1>
+      <p class="lede">Sit comfortably in front of the screen, with your face well lit and in the middle of the picture.</p>
+      <div class="camera-check">
+        <div class="cam-frame card">
+          <img id="cam-preview" alt="Camera preview">
+          <div class="cam-empty" id="cam-empty">Waiting for the camera...</div>
+        </div>
+        <div>
+          <ul class="checks" aria-live="polite">
+            <li id="chk-camera"><span class="tick"></span>Camera is working</li>
+            <li id="chk-face"><span class="tick"></span>Face found</li>
+            <li id="chk-neutral"><span class="tick"></span>Resting position learned</li>
+          </ul>
+          <p class="hint" id="cam-hint"></p>
+          <div class="cam-tools">
+            <label for="cam-select">Camera</label>
+            <div class="row">
+              <select id="cam-select"><option>Looking for cameras...</option></select>
+              <button class="btn btn-secondary" id="cam-refresh" type="button">Refresh</button>
+            </div>
+            <button class="btn btn-ghost" id="recenter" type="button">Hold still, then press to re-center</button>
+          </div>
+        </div>
+      </div>
+      <div class="actions">
+        <button class="btn btn-ghost" data-back><span data-icon="arrowLeft"></span> Back</button>
+        <button class="btn btn-primary" data-next id="cam-next" disabled>Looks good <span data-icon="arrowRight"></span></button>
+      </div>
+    </section>
+
+    <!-- 3. Calibration -->
+    <section class="step" data-step="3" hidden>
+      <h1>Fit HeadVoice to you</h1>
+      <p class="lede">You will be asked to tilt your head in each direction, blink normally, then close your eyes three times. A low tone means close your eyes, a high tone means open them.</p>
+      <div class="calib-choices" id="calib-choices">
+        <button class="card card-pad card-link choice" id="calib-local" type="button">
+          <span data-icon="lock" class="icon"></span>
+          <h3>Calibrate on this computer</h3>
+          <p>Everything stays here.</p>
+        </button>
+        <button class="card card-pad card-link choice" id="calib-cloud" type="button">
+          <span data-icon="shield" class="icon"></span>
+          <h3>Use secure cloud processing</h3>
+          <p>A 25-second clip is uploaded encrypted, used once to compute your settings, then deleted.</p>
+        </button>
+      </div>
+      <div class="calib-live card" id="calib-live" hidden>
+        <p class="calib-step" id="calib-step"></p>
+        <p class="calib-prompt" id="calib-prompt"></p>
+        <div class="calib-track"><div id="calib-bar"></div></div>
+      </div>
+      <div class="calib-result card card-pad" id="calib-result" hidden></div>
+      <div class="actions">
+        <button class="btn btn-ghost" data-back><span data-icon="arrowLeft"></span> Back</button>
+        <button class="btn btn-secondary" data-next id="calib-skip">Skip for now</button>
+        <button class="btn btn-primary" data-next id="calib-next" hidden>Continue <span data-icon="arrowRight"></span></button>
+      </div>
+    </section>
+
+    <!-- 4. Practice -->
+    <section class="step" data-step="4" hidden>
+      <h1>Let's practice</h1>
+      <p class="lede" id="practice-goal">Tilt your head toward the highlighted goal, then close both eyes until the ring fills.</p>
+      <ul class="checks inline" aria-live="polite">
+        <li id="chk-hi"><span class="tick"></span>Highlight a message</li>
+        <li id="chk-say1"><span class="tick"></span>Say the first message</li>
+        <li id="chk-say2"><span class="tick"></span>Say the second message</li>
+      </ul>
+      <div class="practice-target pill" id="practice-target"></div>
+      <div id="practice-menu" class="menu"></div>
+      <div class="actions">
+        <button class="btn btn-ghost" data-back><span data-icon="arrowLeft"></span> Back</button>
+        <a class="btn btn-primary" id="finish" href="app">Start using HeadVoice <span data-icon="arrowRight"></span></a>
+      </div>
+    </section>
+  </div>
+
+  <div class="speaking" id="speaking" hidden aria-live="assertive">
+    <div class="wave" aria-hidden="true"><span></span><span></span><span></span><span></span><span></span></div>
+    <div class="speaking-text" id="speaking-text"></div>
+  </div>
+
+  <script src="start.js"></script>
+</body>
+</html>

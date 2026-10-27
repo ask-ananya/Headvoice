@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HeadVoice</title>
+  <meta name="description" content="HeadVoice lets people who cannot speak or use their hands say what they need with a head tilt and a blink, using an ordinary webcam.">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="landing.css">
+  <script src="common.js"></script>
+</head>
+<body>
+  <div class="wrap">
+    <header class="site-header">
+      <a class="brand" href="./"><span data-brand-mark></span>HeadVoice</a>
+      <div class="header-actions">
+        <a class="btn btn-ghost" href="#how">How it works</a>
+        <a class="btn btn-ghost local-only" href="messages">My messages</a>
+        <a class="btn btn-ghost hosted-only" href="privacy.html">Privacy</a>
+        <button class="icon-btn" data-theme-toggle type="button"></button>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero">
+        <div class="hero-copy">
+          <h1>Say what you need.<br>With a tilt and a blink.</h1>
+          <p class="lede">HeadVoice turns an ordinary webcam into a voice. Tilt your head to choose a message, hold a long blink to say it, and your computer speaks for you. Nothing is said without your own blink.</p>
+          <div class="action-cards">
+            <a class="card card-pad card-link action" id="primary-action" href="start">
+              <span data-icon="play" class="icon"></span>
+              <h3 id="primary-title">Set up HeadVoice</h3>
+              <p id="primary-text">A two-minute camera check and practice, then you are ready.</p>
+            </a>
+            <a class="card card-pad card-link action" id="secondary-action" href="app">
+              <span data-icon="message" class="icon"></span>
+              <h3 id="secondary-title">Start talking</h3>
+              <p id="secondary-text">Already set up? Go straight to your messages.</p>
+            </a>
+          </div>
+        </div>
+
+        <aside class="card preview" aria-label="Example: choosing a message">
+          <div class="preview-head">
+            <h2>Choosing a message</h2>
+            <span class="pill">Your blink confirms</span>
+          </div>
+          <ul class="preview-list" id="preview-list">
+            <li data-dir="Tilt up"><span>I need water</span><span class="cue">Tilt up</span></li>
+            <li data-dir="Tilt left"><span>I need help</span><span class="cue">Tilt left</span></li>
+            <li data-dir="Tilt right"><span>Call my family</span><span class="cue">Tilt right</span></li>
+            <li data-dir="Tilt down"><span>I am in pain</span><span class="cue">Tilt down</span></li>
+          </ul>
+          <div class="preview-foot">
+            <span class="ring" aria-hidden="true"><svg viewBox="0 0 36 36"><circle class="ring-track" cx="18" cy="18" r="15"/><circle class="ring-fill" id="ring-fill" cx="18" cy="18" r="15"/></svg></span>
+            <span id="preview-status">Tilt to choose, hold a blink to speak.</span>
+          </div>
+        </aside>
+      </section>
+
+      <section class="features" aria-label="What makes HeadVoice different">
+        <article class="card card-pad">
+          <span data-icon="shield" class="icon"></span>
+          <h3>Nothing is said without you</h3>
+          <p>A message is spoken only after your own long blink on it. Two quick blinks cancel. If the camera loses you, nothing happens.</p>
+        </article>
+        <article class="card card-pad">
+          <span data-icon="sliders" class="icon"></span>
+          <h3>Fits how you move</h3>
+          <p>A short calibration measures how far you can tilt and how you blink, then picks the layout and settings that suit you. It keeps adjusting as you tire.</p>
+        </article>
+        <article class="card card-pad">
+          <span data-icon="lock" class="icon"></span>
+          <h3>Video stays on your computer</h3>
+          <p>The camera picture is processed on your own computer and never stored. Only simple numbers, like how far you tilted, are used to tune the app.</p>
+        </article>
+      </section>
+
+      <section class="how" id="how">
+        <h2>How it works</h2>
+        <ol class="steps">
+          <li class="card card-pad">
+            <span class="step-num">1</span>
+            <span data-icon="eye" class="icon"></span>
+            <h3>Look at the screen</h3>
+            <p>Sit comfortably in front of any webcam. HeadVoice learns your resting position in a second.</p>
+          </li>
+          <li class="card card-pad">
+            <span class="step-num">2</span>
+            <span data-icon="tilt" class="icon"></span>
+            <h3>Tilt to choose</h3>
+            <p>Tip your head toward a message to highlight it. Small movements are fine.</p>
+          </li>
+          <li class="card card-pad">
+            <span class="step-num">3</span>
+            <span data-icon="volume" class="icon"></span>
+            <h3>Blink to say it</h3>
+            <p>Close both eyes for a moment. The ring fills, and your computer says the message out loud.</p>
+          </li>
+        </ol>
+      </section>
+
+      <section class="demo card" id="demo">
+        <div>
+          <h2 id="demo-title">Try it now</h2>
+          <p id="demo-text">Open the message screen with the built-in phrase list: water, help, family, pain and more.</p>
+        </div>
+        <a class="btn btn-primary" id="demo-action" href="app">Open messages <span data-icon="arrowRight"></span></a>
+      </section>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>HeadVoice is a research prototype, not a medical device.</span>
+      <span>Built with OpenCV 5 and AWS. <a class="hosted-only" href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+
+  <script src="landing.js"></script>
+</body>
+</html>

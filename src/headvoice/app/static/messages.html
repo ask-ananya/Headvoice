@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>My messages</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="messages.css">
+  <script src="common.js"></script>
+</head>
+<body>
+  <div class="wrap narrow">
+    <header class="site-header">
+      <a class="brand" href="./"><span data-brand-mark></span>HeadVoice</a>
+      <div class="header-actions">
+        <a class="btn btn-secondary" href="app"><span data-icon="message"></span> Back to messages</a>
+        <button class="icon-btn" data-theme-toggle type="button"></button>
+      </div>
+    </header>
+
+    <main>
+      <h1>My messages</h1>
+      <p class="lede">Add the things you say most, in your own words. They appear first on the message screen.</p>
+
+      <form class="card card-pad add" id="add-form" autocomplete="off">
+        <label for="text">New message</label>
+        <div class="add-row">
+          <input id="text" name="text" maxlength="80" placeholder="For example: Please turn on the cricket" required>
+          <button class="btn btn-primary" type="submit">Add</button>
+        </div>
+        <div class="add-foot">
+          <span class="error" id="error" role="alert"></span>
+          <span class="count" id="count">0 / 80</span>
+        </div>
+      </form>
+
+      <section class="mine">
+        <div class="section-head">
+          <h2>Your messages</h2>
+          <span class="pill neutral" id="mine-count">0</span>
+        </div>
+        <ul class="msg-list" id="mine" aria-live="polite"></ul>
+        <div class="empty card card-pad" id="empty">
+          <span data-icon="message" class="icon"></span>
+          <p>No messages of your own yet. Names, routines and favourite requests work well: "Call Priya", "Time for my tea", "Turn on the cricket".</p>
+        </div>
+      </section>
+
+      <div class="note card"><span data-icon="lock" class="icon"></span><p>Your messages are saved only on this computer and are never uploaded.</p></div>
+
+      <details class="builtin card card-pad">
+        <summary>Built-in messages (<span id="builtin-count">0</span>)</summary>
+        <div id="builtin"></div>
+      </details>
+    </main>
+  </div>
+  <script src="messages.js"></script>
+</body>
+</html>
