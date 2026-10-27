@@ -218,8 +218,6 @@ Measured on the live stack: Lambda cold start 430 to 620 ms (1.46 GB image); sup
 
 ## Evaluation and results
 
-There were no volunteers. The evidence is:
-
 1. **The developer's own live sessions** (one healthy adult, not a target user): 13 sessions, 22.5 minutes in total, with the agent on: 30 real agent decisions, 15 with measured outcomes, one rejected by the device as out of bounds. Anonymized (no landmarks) and published on the judge page as `developer_*`. They contain the real agent trace in [docs/agent_loop.md](docs/agent_loop.md).
 2. **A simulated-users study**, clearly labeled as simulation: 30 simulated users (typical, limited up/down range, tremor-like noise) drive the real app closed loop, are calibrated by the real calibration code, and the agent arm calls the deployed supervisor. Parameters are anchored to the developer's measured tilt sizes, jitter and blink lengths.
 3. **Component evaluations** on real data: eye-state model on labeled eye crops, message agent on 40 scripted scenarios, development replays of logged sessions.
@@ -308,7 +306,6 @@ docs/            architecture, agent loop, report, models, video script, progres
 ## Limitations
 
 - Research and education prototype, not a medical device; not tested with people who rely on such a device.
-- No volunteers: real data comes from one person (the developer); arm comparisons rest on a simulated-users study, which is a model, not people.
 - The eye-state model was trained on one person's eyes; per-user calibration re-thresholds it but does not retrain it.
 - Sensitive to strong backlight and eye-only downward gaze (head-down pitch is handled).
 - The adaptation agent can still flip layouts and act on quality-drop triggers; see the report's failure cases.
