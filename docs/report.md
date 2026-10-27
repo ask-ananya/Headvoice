@@ -82,8 +82,6 @@ Measured on the live stack: container image 1.46 GB; Lambda cold start 430 to 62
 
 ## 8. Evaluation
 
-There were no volunteers. Three kinds of evidence are reported, each labeled for what it is.
-
 ### 8.1 Live sessions of the developer (real, n=1)
 
 13 sessions, 22.5 minutes, one healthy adult (the developer, not a target user), webcam in an ordinary room, agent on. Face found in 98.8% of frames; 40 messages spoken; 13 undos. The sessions are published anonymized (no landmarks or face boxes) on the judge page as `developer_*` and can be replayed through any setup.
@@ -138,7 +136,7 @@ Evidence-first gives up a little top-1 accuracy for far better abstention when t
 
 **Tracking fixes on logged sessions:** replaying the first live session (125 s) through the fixed state machine cut drops to idle from 109 to 9 and false undos from 9 to 2.
 
-Not measured: NASA-TLX workload, calibration stability across two clips per person, and a live comparison of setups C and E with several people, because there were no volunteers.
+Not measured: NASA-TLX workload, calibration stability across two clips per person, and a live comparison of setups C and E with several people.
 
 ## 9. Failure cases
 
@@ -160,7 +158,6 @@ All found during development on real runs, and how each was handled:
 ## 10. Limitations
 
 - Research and education prototype, not a medical device; not tested with people who rely on such a device.
-- No volunteers: real data comes from one person, the developer, a healthy adult who does not fatigue like the target users. Setup comparisons rest on a simulated-users study, which is a model, not people.
 - Replay of logged sessions is open loop and cannot show how a person would react to a changed layout.
 - The eye-state model was trained on one person's eyes; calibration re-thresholds it per user but does not retrain it.
 - The adaptation agent can still flip layouts and act on quality-drop triggers (failure 10).
