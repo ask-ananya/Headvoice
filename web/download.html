@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Get HeadVoice</title>
+  <meta name="description" content="Download HeadVoice for Windows. It runs on your own computer with any webcam.">
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="common.js"></script>
+</head>
+<body>
+  <div class="wrap narrow">
+    <header class="site-header">
+      <a class="brand" href="./"><span data-brand-mark></span>HeadVoice</a>
+      <div class="header-actions">
+        <a class="btn btn-ghost" href="privacy.html">Privacy</a>
+        <button class="icon-btn" data-theme-toggle type="button"></button>
+      </div>
+    </header>
+
+    <main>
+      <h1>Get HeadVoice</h1>
+      <p class="lede">HeadVoice runs on your own computer, so the camera picture never leaves it. Setup is one download and one double-click.</p>
+
+      <section class="card card-pad download">
+        <div>
+          <span data-icon="download" class="icon"></span>
+          <h2>HeadVoice for Windows</h2>
+          <p>Windows 10 or 11, any webcam, an internet connection for the first start.</p>
+        </div>
+        <a class="btn btn-primary" href="headvoice-windows.zip" download>Download (zip) <span data-icon="download"></span></a>
+      </section>
+
+      <h2 class="section-title">Install in three steps</h2>
+      <ol class="install">
+        <li class="card card-pad">
+          <span class="step-num">1</span>
+          <h3>Unzip</h3>
+          <p>Right-click the downloaded file and choose <b>Extract All</b>. Put the folder somewhere easy to find, such as Documents.</p>
+        </li>
+        <li class="card card-pad">
+          <span class="step-num">2</span>
+          <h3>Double-click "Start HeadVoice"</h3>
+          <p>The first start downloads what HeadVoice needs (a few minutes). If Windows asks whether to run it, choose <b>More info</b>, then <b>Run anyway</b>.</p>
+        </li>
+        <li class="card card-pad">
+          <span class="step-num">3</span>
+          <h3>Follow the setup in your browser</h3>
+          <p>HeadVoice opens in your browser at <code>localhost:8765</code>. The two-minute setup checks the camera and lets you practice.</p>
+        </li>
+      </ol>
+
+      <h2 class="section-title">Good to know</h2>
+      <div class="faq">
+        <details class="card card-pad"><summary>Which camera works?</summary><p>Any webcam that shows your face clearly. Good, even light on your face helps the most. If you have several cameras, setup lets you pick one; phone-as-webcam apps work while the phone is streaming.</p></details>
+        <details class="card card-pad"><summary>Does it need the internet?</summary><p>Only for the first start. After that HeadVoice works offline with its built-in messages, and adjusts itself on your computer as you tire. The cloud adaptation agent and cloud calibration are used in research installs only.</p></details>
+        <details class="card card-pad"><summary>Who can use it?</summary><p>People who can move their head a little and blink, and want a simple way to say everyday things. A helper can set it up. HeadVoice is a research prototype, not a medical device, and should not be relied on for emergencies.</p></details>
+        <details class="card card-pad"><summary>Is my video stored or sent anywhere?</summary><p>No. The camera picture is processed on your computer and never stored. The only exception is optional cloud calibration, which you choose explicitly: a 25-second clip is uploaded encrypted, used once and deleted. See <a href="privacy.html">Privacy</a>.</p></details>
+      </div>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>HeadVoice is a research prototype, not a medical device.</span>
+      <span><a href="./">Home</a> &middot; <a href="privacy.html">Privacy</a></span>
+    </div>
+  </footer>
+</body>
+</html>

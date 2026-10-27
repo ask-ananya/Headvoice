@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HeadVoice Privacy</title>
+  <link rel="stylesheet" href="ui.css">
+  <link rel="stylesheet" href="pages.css">
+  <script src="common.js"></script>
+</head>
+<body>
+  <div class="wrap narrow">
+    <header class="site-header">
+      <a class="brand" href="./"><span data-brand-mark></span>HeadVoice</a>
+      <div class="header-actions">
+        <a class="btn btn-ghost" href="download.html">Get HeadVoice</a>
+        <button class="icon-btn" data-theme-toggle type="button"></button>
+      </div>
+    </header>
+
+    <main class="prose">
+      <h1>Privacy</h1>
+      <p class="lede">HeadVoice is built so that your camera picture stays on your own computer.</p>
+
+      <h2>What stays on your computer</h2>
+      <ul>
+        <li>The camera picture. It is processed in memory to measure head position and whether your eyes are open, and is never stored.</li>
+        <li>Session logs: the measured numbers (head angles, eye openness, signal quality, and the positions of 68 face landmarks) and the messages chosen, saved in the HeadVoice folder so a helper can review them. They are never uploaded automatically. You can delete the <code>data</code> folder at any time.</li>
+      </ul>
+
+      <h2>What can go to the cloud</h2>
+      <ul>
+        <li><b>Adaptation (when online):</b> every minute or so, a short summary of numbers, such as how far you tilted compared with your calibration and how many choices you cancelled. No picture, no face shape, no messages you said. It is checked on your computer before it is sent.</li>
+        <li><b>Cloud calibration (only if you choose it):</b> a 25-second clip, uploaded encrypted, used once to compute your settings, and deleted as soon as it is read. Calibrating "on this computer" uploads nothing.</li>
+      </ul>
+
+      <h2>Where it is processed</h2>
+      <p>Cloud parts run in Amazon Web Services (United States, us-east-1): encrypted storage with automatic deletion for calibration clips, and Amazon Bedrock for the adaptation model. A decision log (the numbers and the decision, never pictures) is kept to show why the app changed something.</p>
+
+      <h2>Safety</h2>
+      <p>Nothing is ever spoken without your own confirming blink. The cloud model can only adjust the interface within fixed limits; it cannot speak, alert anyone or see video. HeadVoice is a research prototype, not a medical device.</p>
+    </main>
+  </div>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <span>HeadVoice is a research prototype, not a medical device.</span>
+      <span><a href="./">Home</a> &middot; <a href="download.html">Get HeadVoice</a></span>
+    </div>
+  </footer>
+</body>
+</html>
