@@ -1,0 +1,33 @@
+{
+  "layouts": [
+    "four_way",
+    "two_choice",
+    "binary_scan"
+  ],
+  "params": {
+    "tilt_hold_ms": {
+      "min": 150,
+      "max": 1000
+    },
+    "highlight_timeout_ms": {
+      "min": 2000,
+      "max": 12000
+    },
+    "long_blink_ms": {
+      "min": 400,
+      "max": 1500
+    },
+    "refractory_ms": {
+      "min": 300,
+      "max": 1500
+    },
+    "tilt_scale": {
+      "min": 0.5,
+      "max": 1.0
+    }
+  },
+  "max_actions_per_window": 3,
+  "action_window_s": 120,
+  "max_tool_calls_per_invocation": 3,
+  "request_timeout_s": 4.0
+}

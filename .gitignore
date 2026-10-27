@@ -1,0 +1,27 @@
+.venv/
+__pycache__/
+*.pyc
+.pytest_cache/
+.ruff_cache/
+
+# Downloaded models (scripts/get_models.py); the project's own eye model is committed.
+models/*
+!models/.gitkeep
+!models/eye_state_svm.yml
+!models/eye_state.json
+
+# Personal data: raw session logs (contain face landmarks), calibration profiles,
+# the user's own messages, temporary calibration clips. Anonymized samples in
+# data/sample/ are committed.
+data/sessions/*
+!data/sessions/.gitkeep
+data/profiles/
+data/custom_messages.json
+data/tmp/
+
+# Account-specific deployment output and build artifacts.
+cdk-outputs.json
+cdk.out/
+web/site/
+
+*.docx

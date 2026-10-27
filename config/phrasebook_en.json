@@ -1,0 +1,31 @@
+{
+  "language": "en",
+  "phrases": [
+    {"id": "need_water", "text": "I need water", "group": "needs"},
+    {"id": "need_help", "text": "I need help", "group": "needs"},
+    {"id": "need_toilet", "text": "I need the toilet", "group": "needs"},
+    {"id": "need_food", "text": "I am hungry", "group": "needs"},
+    {"id": "need_reposition", "text": "Please move me", "group": "needs"},
+    {"id": "need_medicine", "text": "I need my medicine", "group": "needs"},
+    {"id": "need_rest", "text": "I want to rest", "group": "needs"},
+    {"id": "need_air", "text": "Please open the window", "group": "needs"},
+    {"id": "feel_pain", "text": "I am in pain", "group": "feelings"},
+    {"id": "feel_cold", "text": "I am cold", "group": "feelings"},
+    {"id": "feel_hot", "text": "I am too hot", "group": "feelings"},
+    {"id": "feel_tired", "text": "I am tired", "group": "feelings"},
+    {"id": "feel_good", "text": "I feel good", "group": "feelings"},
+    {"id": "feel_scared", "text": "I am scared", "group": "feelings"},
+    {"id": "call_family", "text": "Call my family", "group": "people"},
+    {"id": "call_nurse", "text": "Call the nurse", "group": "people"},
+    {"id": "call_doctor", "text": "I want to see the doctor", "group": "people"},
+    {"id": "want_company", "text": "Please stay with me", "group": "people"},
+    {"id": "want_alone", "text": "I want to be alone", "group": "people"},
+    {"id": "resp_yes", "text": "Yes", "group": "responses"},
+    {"id": "resp_no", "text": "No", "group": "responses"},
+    {"id": "resp_thanks", "text": "Thank you", "group": "responses"},
+    {"id": "resp_wait", "text": "Please wait", "group": "responses"},
+    {"id": "resp_again", "text": "Please say that again", "group": "responses"},
+    {"id": "resp_dont_know", "text": "I do not know", "group": "responses"},
+    {"id": "resp_love", "text": "I love you", "group": "responses"}
+  ]
+}

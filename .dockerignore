@@ -1,0 +1,10 @@
+.venv
+data
+cdk.out
+**/__pycache__
+.pytest_cache
+.ruff_cache
+tests
+eval/results
+models/lena.jpg
+*.docx
