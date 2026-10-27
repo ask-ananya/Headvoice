@@ -1,0 +1,157 @@
+abstain,ambiguous,candidates,error,expected,latency_ms,scenario,valid,variant
+False,False,"need_water,need_help,need_toilet",,need_water,0,c01,True,fixed_order
+False,False,"need_water,need_help,call_nurse",,need_water,2968,c01,True,careless
+False,False,"need_water,call_nurse",,need_water,2962,c01,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_help,0,c02,True,fixed_order
+False,False,"need_help,call_nurse,resp_wait",,need_help,3146,c02,True,careless
+False,False,"need_help,call_nurse",,need_help,2855,c02,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,call_nurse,0,c03,True,fixed_order
+False,False,"call_nurse,need_medicine,need_help",,call_nurse,2453,c03,True,careless
+False,False,"call_nurse,need_medicine",,call_nurse,3024,c03,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_medicine,0,c04,True,fixed_order
+False,False,"need_medicine,feel_pain,call_nurse",,need_medicine,2754,c04,True,careless
+False,False,"need_medicine,feel_pain,call_nurse",,need_medicine,2833,c04,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,resp_thanks,0,c05,True,fixed_order
+False,False,"resp_thanks,feel_good,resp_love",,resp_thanks,2500,c05,True,careless
+False,False,"resp_thanks,feel_good",,resp_thanks,2850,c05,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,feel_cold,0,c06,True,fixed_order
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""The recent message histo...ical positioning needs."", input_type=str]
+    For fu",feel_cold,3731,c06,False,careless
+False,False,"need_reposition,feel_cold",,feel_cold,3421,c06,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_toilet,0,c07,True,fixed_order
+False,False,"need_toilet,call_nurse,need_help",,need_toilet,2701,c07,True,careless
+False,False,"need_toilet,need_help",,need_toilet,2871,c07,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,resp_yes,0,c08,True,fixed_order
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""The caregiver asked a ye...if they need more time."", input_type=str]
+    For fu",resp_yes,3169,c08,False,careless
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value='The gesture context indi...er than evidence-based.', input_type=str]
+    For fu",resp_yes,2784,c08,False,evidence_first
+False,False,"need_water,need_help,need_toilet",,resp_no,0,c09,True,fixed_order
+False,False,"resp_no,resp_again,resp_dont_know",,resp_no,2709,c09,True,careless
+False,False,"resp_no,resp_again",,resp_no,2643,c09,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,call_family,0,c10,True,fixed_order
+False,False,"call_family,want_company,resp_love",,call_family,2682,c10,True,careless
+False,False,call_family,,call_family,2956,c10,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_rest,0,c11,True,fixed_order
+False,False,"need_rest,feel_tired,need_help",,need_rest,2695,c11,True,careless
+False,False,"need_rest,feel_tired",,need_rest,2940,c11,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,feel_hot,0,c12,True,fixed_order
+False,False,"need_air,feel_hot,need_water",,feel_hot,2874,c12,True,careless
+False,False,"need_air,feel_hot",,feel_hot,3111,c12,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_reposition,0,c13,True,fixed_order
+False,False,"need_reposition,feel_pain,need_help",,need_reposition,3024,c13,True,careless
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""The gesture context show...ur and pain indication."", input_type=str]
+    For fu",need_reposition,3367,c13,False,evidence_first
+False,False,"need_water,need_help,need_toilet",,want_company,0,c14,True,fixed_order
+False,False,"want_company,call_nurse,need_help",,want_company,2748,c14,True,careless
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""The user recently expres... restating the emotion."", input_type=str]
+    For fu",want_company,3055,c14,False,evidence_first
+False,False,"need_water,need_help,need_toilet",,resp_wait,0,c15,True,fixed_order
+False,False,"resp_wait,need_help,resp_again",,resp_wait,2916,c15,True,careless
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""The gesture context show...ting the user's intent."", input_type=str]
+    For fu",resp_wait,3434,c15,False,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_food,0,c16,True,fixed_order
+False,False,"need_food,need_water,need_help",,need_food,2932,c16,True,careless
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""The person highlighted '... the primary candidate."", input_type=str]
+    For fu",need_food,3359,c16,False,evidence_first
+False,False,"need_water,need_help,need_toilet",,call_doctor,0,c17,True,fixed_order
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""The gesture context show...n and medication needs."", input_type=str]
+    For fu",call_doctor,2973,c17,False,careless
+False,False,"call_doctor,feel_pain,need_medicine",,call_doctor,3087,c17,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,resp_again,0,c18,True,fixed_order
+False,False,"resp_again,resp_wait,call_nurse",,resp_again,2855,c18,True,careless
+False,False,resp_again,,resp_again,2072,c18,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,feel_good,0,c19,True,fixed_order
+False,False,"feel_good,need_rest,resp_thanks",,feel_good,2867,c19,True,careless
+False,False,"feel_good,resp_thanks",,feel_good,2604,c19,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_air,0,c20,True,fixed_order
+False,False,"need_air,feel_hot,need_water",,need_air,2425,c20,True,careless
+False,False,"need_air,feel_hot",,need_air,2978,c20,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,resp_dont_know,0,c21,True,fixed_order
+False,False,"resp_again,resp_dont_know,need_help",,resp_dont_know,18670,c21,True,careless
+False,False,"resp_again,resp_dont_know",,resp_dont_know,2929,c21,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,want_alone,0,c22,True,fixed_order
+False,False,"need_rest,want_alone,feel_tired",,want_alone,2942,c22,True,careless
+False,False,"need_rest,feel_tired",,want_alone,3256,c22,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,resp_love,0,c23,True,fixed_order
+False,False,"resp_love,want_company,resp_thanks",,resp_love,2389,c23,True,careless
+False,False,"resp_love,want_company",,resp_love,2747,c23,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_help,0,c24,True,fixed_order
+False,False,"need_help,want_company,call_nurse",,need_help,2906,c24,True,careless
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""User expressed fear ('fe...xplicit double gesture."", input_type=str]
+    For fu",need_help,3307,c24,False,evidence_first
+False,False,"need_water,need_help,need_toilet",,need_water,0,c25,True,fixed_order
+False,False,"need_water,need_toilet,need_rest",,need_water,2923,c25,True,careless
+False,False,"need_water,need_food",,need_water,3042,c25,True,evidence_first
+False,False,"need_water,need_help,need_toilet",,feel_pain,0,c26,True,fixed_order
+False,False,"feel_pain,need_medicine,call_nurse",,feel_pain,2983,c26,True,careless
+False,False,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value=""The person highlighted '...tion if pain is severe."", input_type=str]
+    For fu",feel_pain,3756,c26,False,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a01,True,fixed_order
+False,True,"need_water,need_help,need_toilet",,abstain,2727,a01,True,careless
+True,True,,,abstain,2370,a01,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a02,True,fixed_order
+False,True,"need_food,need_rest,need_water",,abstain,2679,a02,True,careless
+True,True,,,abstain,2662,a02,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a03,True,fixed_order
+False,True,"need_rest,need_water,feel_tired",,abstain,2823,a03,True,careless
+True,True,,,abstain,2483,a03,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a04,True,fixed_order
+False,True,"need_food,need_water,need_toilet",,abstain,2341,a04,True,careless
+True,True,,,abstain,2322,a04,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a05,True,fixed_order
+True,True,,,abstain,2861,a05,True,careless
+True,True,,,abstain,2626,a05,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a06,True,fixed_order
+False,True,"need_water,need_food,need_toilet",,abstain,2933,a06,True,careless
+True,True,,,abstain,2567,a06,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a07,True,fixed_order
+False,True,"need_help,call_nurse,resp_wait",,abstain,3189,a07,True,careless
+True,True,,,abstain,2163,a07,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a08,True,fixed_order
+True,True,,,abstain,2110,a08,True,careless
+True,True,,,abstain,2204,a08,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a09,True,fixed_order
+False,True,"need_rest,need_water,feel_tired",,abstain,2608,a09,True,careless
+False,True,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value='The recent message shows...eaningful alternatives.', input_type=str]
+    For fu",abstain,2897,a09,False,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a10,True,fixed_order
+False,True,"need_water,need_food,feel_tired",,abstain,2523,a10,True,careless
+True,True,,,abstain,2253,a10,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a11,True,fixed_order
+False,True,"feel_good,need_food,resp_thanks",,abstain,2827,a11,True,careless
+True,True,,,abstain,2322,a11,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a12,True,fixed_order
+False,True,,"1 validation error for Suggestion
+reason
+  String should have at most 500 characters [type=string_too_long, input_value='The gesture detected (ra... or deliberate gesture.', input_type=str]
+    For fu",abstain,2827,a12,False,careless
+True,True,,,abstain,2547,a12,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a13,True,fixed_order
+False,True,"need_food,need_water,call_nurse",,abstain,2790,a13,True,careless
+False,True,need_food,,abstain,2415,a13,True,evidence_first
+False,True,"need_water,need_help,need_toilet",,abstain,0,a14,True,fixed_order
+False,True,"need_rest,need_water,feel_tired",,abstain,2604,a14,True,careless
+True,True,,,abstain,2325,a14,True,evidence_first

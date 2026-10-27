@@ -1,0 +1,573 @@
+{
+ "description": "Scripted message-agent scenarios. Written by the HeadVoice team, not collected from users. 'expected' is a phrasebook id, or 'abstain' when the evidence does not support a specific message.",
+ "scenarios": [
+  {
+   "id": "c01",
+   "expected": "need_water",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "14:10",
+    "recent_messages": [],
+    "gesture_context": "highlighted 'I need water' twice, both cancelled by signal loss before confirming",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c02",
+   "expected": "need_help",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "09:00",
+    "recent_messages": [],
+    "gesture_context": "highlighted 'I need help', confirmation interrupted by a dropout",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c03",
+   "expected": "call_nurse",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "02:30",
+    "recent_messages": [
+     "feel_pain"
+    ],
+    "gesture_context": "after 'I am in pain' the user tilted toward the people group and highlighted 'Call the nurse'",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c04",
+   "expected": "need_medicine",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "21:00",
+    "recent_messages": [
+     "feel_pain",
+     "call_nurse"
+    ],
+    "gesture_context": "highlighted 'I need my medicine', then the highlight timed out",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c05",
+   "expected": "resp_thanks",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "12:45",
+    "recent_messages": [
+     "need_water"
+    ],
+    "gesture_context": "a caregiver just brought water; the user highlighted 'Thank you' and the highlight timed out",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c06",
+   "expected": "feel_cold",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "06:15",
+    "recent_messages": [
+     "need_reposition"
+    ],
+    "gesture_context": "highlighted 'I am cold' then undo was triggered by an involuntary double blink",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c07",
+   "expected": "need_toilet",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "08:05",
+    "recent_messages": [],
+    "gesture_context": "highlighted 'I need the toilet' three times in the last minute, none confirmed",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c08",
+   "expected": "resp_yes",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "10:20",
+    "recent_messages": [
+     "resp_again"
+    ],
+    "gesture_context": "asked a yes or no question by a caregiver; highlighted 'Yes' and the signal dropped",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c09",
+   "expected": "resp_no",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "10:22",
+    "recent_messages": [
+     "resp_again"
+    ],
+    "gesture_context": "asked a yes or no question; highlighted 'No' twice",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c10",
+   "expected": "call_family",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "18:30",
+    "recent_messages": [],
+    "gesture_context": "highlighted 'Call my family', the long blink was cut short",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c11",
+   "expected": "need_rest",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "22:40",
+    "recent_messages": [
+     "feel_tired"
+    ],
+    "gesture_context": "after 'I am tired' the user highlighted 'I want to rest'",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c12",
+   "expected": "feel_hot",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "15:00",
+    "recent_messages": [
+     "need_air"
+    ],
+    "gesture_context": "highlighted 'I am too hot', then turned away briefly",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c13",
+   "expected": "need_reposition",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "03:10",
+    "recent_messages": [
+     "feel_pain"
+    ],
+    "gesture_context": "highlighted 'Please move me' and undo fired",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c14",
+   "expected": "want_company",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "20:15",
+    "recent_messages": [
+     "feel_scared"
+    ],
+    "gesture_context": "after 'I am scared' the user highlighted 'Please stay with me'",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c15",
+   "expected": "resp_wait",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "11:00",
+    "recent_messages": [],
+    "gesture_context": "highlighted 'Please wait' while a caregiver was talking; highlight timed out",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c16",
+   "expected": "need_food",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "13:05",
+    "recent_messages": [],
+    "gesture_context": "highlighted 'I am hungry' twice, the second time the blink was too short",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c17",
+   "expected": "call_doctor",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "09:30",
+    "recent_messages": [
+     "feel_pain",
+     "need_medicine"
+    ],
+    "gesture_context": "highlighted 'I want to see the doctor', dropout during the blink",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c18",
+   "expected": "resp_again",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "16:40",
+    "recent_messages": [],
+    "gesture_context": "caregiver spoke quickly; user highlighted 'Please say that again'",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c19",
+   "expected": "feel_good",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "17:10",
+    "recent_messages": [
+     "resp_thanks"
+    ],
+    "gesture_context": "highlighted 'I feel good' and the signal was briefly lost",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c20",
+   "expected": "need_air",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "14:50",
+    "recent_messages": [
+     "feel_hot"
+    ],
+    "gesture_context": "after 'I am too hot' the user highlighted 'Please open the window'",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c21",
+   "expected": "resp_dont_know",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "11:30",
+    "recent_messages": [
+     "resp_again"
+    ],
+    "gesture_context": "asked a question; highlighted 'I do not know' and the highlight timed out",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c22",
+   "expected": "want_alone",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "21:30",
+    "recent_messages": [
+     "feel_tired"
+    ],
+    "gesture_context": "highlighted 'I want to be alone' then undo fired",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c23",
+   "expected": "resp_love",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "19:00",
+    "recent_messages": [
+     "call_family"
+    ],
+    "gesture_context": "family arrived after 'Call my family'; user highlighted 'I love you'",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c24",
+   "expected": "need_help",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "04:00",
+    "recent_messages": [
+     "feel_scared"
+    ],
+    "gesture_context": "after 'I am scared' the user highlighted 'I need help' twice",
+    "signal_quality": 0.7,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c25",
+   "expected": "need_water",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "13:40",
+    "recent_messages": [
+     "need_food"
+    ],
+    "gesture_context": "after 'I am hungry' and a meal, highlighted 'I need water'",
+    "signal_quality": 0.75,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "c26",
+   "expected": "feel_pain",
+   "ambiguous": false,
+   "note": "",
+   "context": {
+    "time_of_day": "02:00",
+    "recent_messages": [],
+    "gesture_context": "highlighted 'I am in pain' three times in two minutes, each cancelled by a short blink",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "a01",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "10:00",
+    "recent_messages": [],
+    "gesture_context": "session just started, no highlights yet",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "a02",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "15:30",
+    "recent_messages": [
+     "resp_thanks"
+    ],
+    "gesture_context": "no highlights since the last message",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "a03",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "night time alone is not evidence",
+   "context": {
+    "time_of_day": "03:00",
+    "recent_messages": [],
+    "gesture_context": "no highlights; user mostly still",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "a04",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "lunch time alone is not evidence",
+   "context": {
+    "time_of_day": "12:00",
+    "recent_messages": [],
+    "gesture_context": "no highlights",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "a05",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "08:00",
+    "recent_messages": [],
+    "gesture_context": "highlights moved between four different phrases quickly with no pattern",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "a06",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "14:00",
+    "recent_messages": [
+     "need_water"
+    ],
+    "gesture_context": "highlighted several phrases, none more than once",
+    "signal_quality": 0.4,
+    "gesture_confidence": 0.3
+   }
+  },
+  {
+   "id": "a07",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "16:00",
+    "recent_messages": [],
+    "gesture_context": "face lost for most of the last minute",
+    "signal_quality": 0.2,
+    "gesture_confidence": 0.1
+   }
+  },
+  {
+   "id": "a08",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "19:30",
+    "recent_messages": [],
+    "gesture_context": "signal quality low, landmarks often from optical flow",
+    "signal_quality": 0.35,
+    "gesture_confidence": 0.2
+   }
+  },
+  {
+   "id": "a09",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "22:00",
+    "recent_messages": [
+     "resp_yes"
+    ],
+    "gesture_context": "no highlights since 'Yes'",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "a10",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "07:00",
+    "recent_messages": [],
+    "gesture_context": "user turned away from the screen for most of the window",
+    "signal_quality": 0.3,
+    "gesture_confidence": 0.2
+   }
+  },
+  {
+   "id": "a11",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "11:15",
+    "recent_messages": [
+     "feel_good"
+    ],
+    "gesture_context": "no highlights; user nodded slightly",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.3
+   }
+  },
+  {
+   "id": "a12",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "17:45",
+    "recent_messages": [],
+    "gesture_context": "rapid alternating tilts, likely not deliberate",
+    "signal_quality": 0.6,
+    "gesture_confidence": 0.25
+   }
+  },
+  {
+   "id": "a13",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "the need was already expressed",
+   "context": {
+    "time_of_day": "13:00",
+    "recent_messages": [
+     "need_food"
+    ],
+    "gesture_context": "no highlights since 'I am hungry'",
+    "signal_quality": 0.9,
+    "gesture_confidence": 0.8
+   }
+  },
+  {
+   "id": "a14",
+   "expected": "abstain",
+   "ambiguous": true,
+   "note": "",
+   "context": {
+    "time_of_day": "05:30",
+    "recent_messages": [],
+    "gesture_context": "low light, CLAHE active, no stable highlights",
+    "signal_quality": 0.3,
+    "gesture_confidence": 0.2
+   }
+  }
+ ]
+}
