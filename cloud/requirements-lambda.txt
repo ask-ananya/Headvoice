@@ -1,0 +1,4 @@
+# Pinned to the device versions (uv.lock); headless build of the same OpenCV 5 contrib.
+opencv-contrib-python-headless==5.0.0.93
+numpy==2.2.6
+pydantic==2.14.1

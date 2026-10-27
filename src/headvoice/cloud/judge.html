@@ -1,0 +1,385 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>HeadVoice Replay</title>
+  <style>
+    :root {
+      --bg: #f7f7f5;
+      --fg: #1b1d21;
+      --muted: #5f6672;
+      --card: #ffffff;
+      --line: #d9dce1;
+      --accent: #2f6fed;
+      --ok: #1a7f37;
+      --warn: #b35900;
+      --bad: #c62828;
+      --hi: #b88600;
+    }
+
+    @media (prefers-color-scheme: dark) {
+      :root {
+        --bg: #0f1115;
+        --fg: #eceef2;
+        --muted: #9aa3b2;
+        --card: #181b21;
+        --line: #2c313a;
+        --accent: #6b9bff;
+        --ok: #4cc06a;
+        --warn: #f0a04b;
+        --bad: #ff6b6b;
+        --hi: #ffd400;
+      }
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--fg);
+      font: 16px/1.45 system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+    }
+
+    main {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 24px 16px 48px;
+    }
+
+    h1 {
+      font-size: 28px;
+      margin: 0 0 4px;
+    }
+
+    h2 {
+      font-size: 19px;
+      margin: 28px 0 10px;
+    }
+
+    .sub {
+      color: var(--muted);
+      margin: 0 0 20px;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 10px;
+      padding: 16px;
+    }
+
+    .controls {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      align-items: end;
+    }
+
+    label {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      font-size: 14px;
+      color: var(--muted);
+    }
+
+    select,
+    button {
+      font: inherit;
+      padding: 8px 10px;
+      border-radius: 8px;
+      border: 1px solid var(--line);
+      background: var(--card);
+      color: var(--fg);
+    }
+
+    button {
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+      cursor: pointer;
+    }
+
+    button.secondary {
+      background: var(--card);
+      color: var(--accent);
+    }
+
+    button:disabled {
+      opacity: 0.55;
+      cursor: wait;
+    }
+
+    .check {
+      flex-direction: row;
+      align-items: center;
+      gap: 6px;
+      color: var(--fg);
+    }
+
+    table {
+      border-collapse: collapse;
+      width: 100%;
+      font-size: 14px;
+    }
+
+    th,
+    td {
+      text-align: left;
+      padding: 6px 8px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+    }
+
+    th {
+      color: var(--muted);
+      font-weight: 600;
+    }
+
+    td.num {
+      font-variant-numeric: tabular-nums;
+    }
+
+    .scroll {
+      overflow-x: auto;
+    }
+
+    #status {
+      color: var(--muted);
+      min-height: 1.4em;
+      margin-top: 10px;
+    }
+
+    .legend {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 6px;
+    }
+
+    .legend span::before {
+      content: "";
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 2px;
+      margin-right: 5px;
+      background: var(--c);
+      vertical-align: -1px;
+    }
+
+    .trace {
+      border-top: 1px solid var(--line);
+      padding: 10px 0;
+      font-size: 14px;
+    }
+
+    .trace b {
+      font-size: 15px;
+    }
+
+    .mono {
+      font-family: ui-monospace, Consolas, monospace;
+      font-size: 12.5px;
+      color: var(--muted);
+      word-break: break-word;
+    }
+
+    .ok {
+      color: var(--ok);
+    }
+
+    .bad {
+      color: var(--bad);
+    }
+
+    .note {
+      font-size: 13px;
+      color: var(--muted);
+      margin-top: 24px;
+    }
+
+    .badge {
+      font-size: 13px;
+      font-weight: 600;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: var(--line);
+      color: var(--fg);
+      vertical-align: middle;
+      margin-left: 8px;
+    }
+
+    svg text {
+      fill: var(--muted);
+      font-size: 11px;
+    }
+  </style>
+</head>
+
+<body>
+  <main>
+    <h1>HeadVoice replay</h1>
+    <p class="sub">Replay sessions (head pose, eye openness and signal quality, as the OpenCV 5 pipeline outputs them;
+      no video) through each interface setup on AWS, and see what the adaptation agent decided and why.</p>
+
+    <div class="card">
+      <div class="controls">
+        <label>Session <select id="dataset">
+            <option>Loading...</option>
+          </select></label>
+        <label>Setup
+          <select id="arm">
+            <option value="A">A. Fixed menu, generic profile</option>
+            <option value="B">B. Dwell selection (no blink)</option>
+            <option value="C" selected>C. Calibrated, no adaptation</option>
+            <option value="D">D. Calibrated + rule policy</option>
+            <option value="E">E. Calibrated + supervisor agent (Bedrock)</option>
+          </select>
+        </label>
+        <label class="check"><input type="checkbox" id="fatigue"> Simulate fatigue</label>
+        <button id="run">Run replay</button>
+        <button id="all" class="secondary">Compare all setups</button>
+      </div>
+      <div id="status"></div>
+    </div>
+
+    <section id="results" hidden>
+      <h2>Metrics <span class="badge" id="sim-badge" hidden>Simulated user</span></h2>
+      <div class="card scroll">
+        <table id="metrics"></table>
+      </div>
+      <h2>Timeline</h2>
+      <div class="card scroll"><svg id="timeline" width="1060" height="140"></svg>
+        <div class="legend">
+          <span style="--c: var(--accent)">highlight</span><span style="--c: var(--ok)">spoken</span>
+          <span style="--c: var(--warn)">undo or timeout</span><span style="--c: var(--bad)">wrong selection</span>
+          <span style="--c: var(--hi)">agent decision</span><span style="--c: var(--muted)">target shown</span>
+        </div>
+      </div>
+      <h2>Adaptation decisions</h2>
+      <div class="card" id="traces"></div>
+    </section>
+
+    <p class="note">Research and education prototype, not a medical device. Replay uses recorded measurements, so it
+      cannot show how a person would react to a changed layout. Fatigue is simulated by shrinking recorded head
+      movements over the session. Sessions marked "Simulated user" come from the simulated-users study (a model of a
+      user driving the real app), not from recordings of people.</p>
+  </main>
+  <script>
+    "use strict";
+    const $ = (id) => document.getElementById(id);
+    const esc = (x) => String(x ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" })[c]);
+    const METRICS = [
+      ["task_success_rate", "Task success rate"], ["correct", "Correct selections"], ["false_triggers", "False triggers"],
+      ["selection_time_s_median", "Selection time, median (s)"], ["retries_per_correct", "Retries per correct selection"],
+      ["speaks", "Messages spoken"], ["undos", "Undos"], ["highlight_timeouts", "Highlight timeouts"],
+      ["drops_to_idle", "Signal dropouts"], ["abstention_correct", "Abstention in low-quality windows"],
+    ];
+
+    async function api(path, body) {
+      const r = await fetch(path, body ? { method: "POST", headers: { "Content-Type": "application/json" }, body: JSON.stringify(body) } : {});
+      if (!r.ok) throw new Error(`${r.status} ${await r.text()}`);
+      return r.json();
+    }
+    const base = location.pathname.replace(/\/judge\/?$/, "");
+
+    async function loadDatasets() {
+      try {
+        const d = await api(`${base}/judge/datasets`);
+        $("dataset").innerHTML = d.datasets.map((k) => `<option value="${esc(k)}">${esc(label(k))}</option>`).join("") || "<option>No sample sessions</option>";
+      } catch (e) { $("status").textContent = `Could not list sessions: ${e.message}`; }
+    }
+
+    // Sessions from the simulated-users study are named sim_<kind>_<id>_<condition>.
+    const KIND = { typical: "typical movement", limited_ud: "limited up/down range", tremor: "tremor-like noise" };
+    function isSim(key) { return key.replace("sample/", "").startsWith("sim_"); }
+    function label(key) {
+      const name = key.replace("sample/", "").replace(/\.jsonl$/, "");
+      const m = name.match(/^sim_(typical|limited_ud|tremor)_(sim\d+)_(normal|fatigue)$/);
+      if (!m) return name;
+      return `Simulated user, ${KIND[m[1]]} (${m[2]}), ${m[3] === "fatigue" ? "fatigue" : "normal"}`;
+    }
+
+    function fmt(v) { return v === null || v === undefined ? "not measured" : typeof v === "number" ? (Number.isInteger(v) ? v : v.toFixed(2)) : esc(v); }
+
+    function renderMetrics(results) {
+      const head = `<tr><th>Metric</th>${results.map((r) => `<th>${esc(r.arm)}. ${esc(r.arm_name)}${r.fatigue_simulated ? " (fatigue sim)" : ""}</th>`).join("")}</tr>`;
+      const rows = METRICS.map(([k, n]) => `<tr><td>${n}</td>${results.map((r) => `<td class="num">${fmt(r.metrics[k])}</td>`).join("")}</tr>`);
+      const ag = ["decisions", "latency_ms_p50", "latency_ms_p95", "rejected_tool_calls", "no_change_rate", "cost_usd"].map((k) =>
+        `<tr><td>Agent: ${k.replaceAll("_", " ")}</td>${results.map((r) => `<td class="num">${fmt((r.metrics.agent || {})[k])}</td>`).join("")}</tr>`);
+      $("metrics").innerHTML = head + rows.join("") + ag.join("");
+    }
+
+    function renderTimeline(r) {
+      const svg = $("timeline"), W = 1040, x0 = 10, dur = Math.max(r.duration_s, 1);
+      const x = (t) => x0 + (t - (r.timeline[0]?.t ?? 0)) / dur * W;
+      const lanes = { target: 20, highlight: 45, speak: 70, task_hit: 70, task_miss: 70, undo: 95, highlight_timeout: 95, agent_decision: 120 };
+      const color = {
+        target: "var(--muted)", highlight: "var(--accent)", speak: "var(--ok)", task_hit: "var(--ok)", task_miss: "var(--bad)",
+        undo: "var(--warn)", highlight_timeout: "var(--warn)", agent_decision: "var(--hi)"
+      };
+      let out = "";
+      for (const e of r.timeline) {
+        if (!(e.type in lanes)) continue;
+        out += `<rect x="${x(e.t).toFixed(1)}" y="${lanes[e.type] - 8}" width="3" height="16" fill="${color[e.type]}"><title>${esc(e.t.toFixed(1))}s ${esc(e.type)} ${esc(e.item || "")}</title></rect>`;
+      }
+      for (let s = 0; s <= dur; s += Math.max(10, Math.round(dur / 10 / 10) * 10)) out += `<text x="${x0 + s / dur * W}" y="138">${s}s</text>`;
+      svg.innerHTML = out;
+    }
+
+    function renderTraces(r) {
+      if (!r.traces.length) { $("traces").innerHTML = `<p class="mono">No adaptation in setup ${esc(r.arm)}.</p>`; return; }
+      $("traces").innerHTML = r.traces.map((t) => {
+        const acts = t.actions.map((a, i) => {
+          const ap = t.applied[i] || {};
+          return `${esc(a.tool)} ${esc(JSON.stringify(a.args))} <span class="${ap.applied ? "ok" : "bad"}">${ap.applied ? "applied" : "rejected: " + esc(ap.rejected_reason)}</span>`;
+        }).join("; ");
+        const ev = t.input_summary || {};
+        const evid = ["quality_mean", "undos", "timeouts", "tilt_near_misses", "tilt_amplitude_vs_calibrated", "amplitude_trend_per_min"]
+          .map((k) => `${k}=${esc(JSON.stringify(ev[k]))}`).join(" ");
+        const checked = (t.tool_calls || []).filter((c) => c.result !== undefined).map((c) => c.tool);
+        const out = t.outcome_after ? `<div class="mono ok">after ${t.outcome_after.window_s}s: selections=${t.outcome_after.selections} undos=${t.outcome_after.undos} timeouts=${t.outcome_after.timeouts} near_misses=${t.outcome_after.tilt_near_misses}</div>` : "";
+        return `<div class="trace"><b>${t.t.toFixed(0)}s, ${esc(t.policy)}, trigger: ${esc(t.trigger)}</b>${t.latency_ms ? ` <span class="mono">${t.latency_ms} ms</span>` : ""}
+      <div>${acts}</div><div>${esc(t.reason)}</div>${checked.length ? `<div class="mono">checked first: ${esc(checked.join(", "))}</div>` : ""}
+      <div class="mono">measured: ${evid}</div>${out}</div>`;
+      }).join("");
+    }
+
+    async function run(arms) {
+      const ds = $("dataset").value, fatigue = $("fatigue").checked;
+      $("run").disabled = $("all").disabled = true;
+      const results = [];
+      try {
+        for (const arm of arms) {
+          $("status").textContent = `Replaying setup ${arm} on AWS... (setup E calls Bedrock and takes longer)`;
+          results.push(await api(`${base}/judge/replay`, { dataset_key: ds, arm, fatigue }));
+        }
+        $("results").hidden = false;
+        renderMetrics(results);
+        const last = results[results.length - 1];
+        renderTimeline(last);
+        renderTraces(results.find((r) => r.traces.length) || last);
+        $("status").textContent = `Done. ${results.map((r) => `${r.arm}: ${r.frames} frames replayed in ${r.replay_ms} ms`).join("; ")}.`;
+        $("sim-badge").hidden = !isSim(ds);
+      } catch (e) {
+        $("status").textContent = `Replay failed: ${e.message}`;
+      } finally {
+        $("run").disabled = $("all").disabled = false;
+      }
+    }
+
+    $("run").onclick = () => run([$("arm").value]);
+    $("all").onclick = () => run(["A", "B", "C", "D", "E"]);
+    loadDatasets();
+  </script>
+</body>
+
+</html>
